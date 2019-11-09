@@ -39,7 +39,7 @@ namespace Ryggsacken_del2
                             if (lsForemal.Count == antal)
                             {
                                 Console.WriteLine("Du har redan lagt till {0} föremål. ", antal);
-                                Console.WriteLine("Ta bort ett föremål för att lägga till fler. ", antal);
+                                Console.WriteLine("Ta bort ett föremål för att lägga till fler. ");
                                 Console.WriteLine("Går tillbaka till menyn... ");
                             }
                             else
