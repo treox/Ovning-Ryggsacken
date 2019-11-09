@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Ryggsacken_del1
+namespace Ryggsacken_del2
 {
     class Program
     {
         static void Main(string[] args)
         {
-            
+           
             var lsForemal = new List<string>();
 
             for ( ; ; )
@@ -22,6 +22,7 @@ namespace Ryggsacken_del1
                 Console.WriteLine();
 
                 var valstr = Console.ReadLine();
+                int antal = 6;
 
                 if (valstr == "")
                 {
@@ -32,32 +33,43 @@ namespace Ryggsacken_del1
                     switch(valstr)
                     {
                         case "1":
-                            Console.Write("Lägg till ett föremål ");
-                            Console.Write("(lämna blankt för att inte lägga till något): ");
-                            string ltForemal = Console.ReadLine();
+                            Console.WriteLine("Du kan lägga till {0} föremål. ", antal);
+                            Console.WriteLine("Du har lagt till {0} föremål. ", lsForemal.Count);
 
-                            if (ltForemal == "")
+                            if (lsForemal.Count == antal)
                             {
-                                Console.WriteLine("Du lade inte till något föremål. ");
+                                Console.WriteLine("Du har redan lagt till {0} föremål. ", antal);
+                                Console.WriteLine("Ta bort ett föremål för att lägga till fler. ", antal);
                                 Console.WriteLine("Går tillbaka till menyn... ");
                             }
                             else
                             {
-                                lsForemal.Insert(0 ,ltForemal);
-                                Console.WriteLine($"Du lade till: {ltForemal} ");
+                                Console.Write("Lägg till ett föremål ");
+                                Console.Write("(lämna blankt för att inte lägga till något): ");
+                                string ltForemal = Console.ReadLine();
+                                if (ltForemal == "")
+                                {
+                                    Console.WriteLine("Du lade inte till något föremål. ");
+                                    Console.WriteLine("Går tillbaka till menyn... ");
+                                }
+                                else
+                                {
+                                    lsForemal.Insert(0 ,ltForemal);
+                                    Console.WriteLine($"Du lade till: {ltForemal} ");
+                                }
                             }
                             break;
                         case "2":
-                            Console.WriteLine("Skriver ut innehåll ({0} föremål)... ", lsForemal.Count);
+                            Console.WriteLine("Skriver ut innehåll ({0} av {1})... ", lsForemal.Count, antal);
 
                             foreach (string item in lsForemal)
                             {
-                            Console.WriteLine(item);
+                                Console.WriteLine(item);
                             }
                         
                             break;
                         case "3":
-                            Console.Write("Är du säker på att du vill rensa innehållet [y]/[n]? ");
+                            Console.Write("Är du säker på att du vill ta bort det senaste föremålet [y]/[n]? ");
                             string rensa = Console.ReadLine();
 
                             if (rensa == "y")
@@ -70,7 +82,7 @@ namespace Ryggsacken_del1
                                 else
                                 {
                                     Console.WriteLine("Rensar innehåll... ");
-                                    lsForemal.Clear();
+                                    lsForemal.RemoveAt(0);
                                 }
                             }
                             else
@@ -86,7 +98,7 @@ namespace Ryggsacken_del1
                             break;
                     }
                 }
-            }
+            } 
         }
     }
 }
